@@ -1,0 +1,12 @@
+{
+  "name": "jekyll",
+  // Reuse the compose service as-is so the image tag, ports, user, and
+  // environment are only defined in compose.yaml.
+  "dockerComposeFile": "../compose.yaml",
+  "service": "jekyll",
+  // Must match working_dir/volume mount in compose.yaml.
+  "workspaceFolder": "/srv/jekyll",
+  // The service's entrypoint is replaced by the idle command, so install
+  // gems here instead.
+  "postCreateCommand": "bundle install"
+}

@@ -1,0 +1,15 @@
+services:
+  jekyll:
+    image: jekyll/jekyll:4.4.1
+    entrypoint: ./container/entrypoint.sh
+    command: serve
+    working_dir: /srv/jekyll
+    environment:
+      BUNDLE_PATH: vendor/bundle
+      HOME: /tmp
+    volumes:
+      - .:/srv/jekyll
+    ports:
+      - "127.0.0.1:80:80"
+      - "127.0.0.1:35729:35729"
+    user: "${UID:-1000}:${GID:-1000}"

@@ -1,0 +1,39 @@
+{
+  "version": "2.0.0",
+  "tasks": [
+    {
+      "label": "start server",
+      "detail": "Serve the site at http://localhost/ with live reload",
+      "type": "shell",
+      // Same entrypoint and command as compose.yaml; serve options live in
+      // _config.yaml.
+      "command": "./container/entrypoint.sh serve",
+      "isBackground": true,
+      "problemMatcher": {
+        "owner": "jekyll",
+        "pattern": { "regexp": "^\\s*Error:\\s+(.*)$", "message": 1 },
+        "background": {
+          "activesBegin": true,
+          "beginsPattern": "Regenerating:|Generating\\.\\.\\.",
+          "endsPattern": "Server running|\\.\\.\\.done in"
+        }
+      },
+      "presentation": { "reveal": "always", "panel": "dedicated" },
+      "runOptions": { "instanceLimit": 1 }
+    },
+    {
+      "label": "stop server",
+      "detail": "Stop the running server task",
+      "command": "${input:terminateServer}",
+      "problemMatcher": []
+    }
+  ],
+  "inputs": [
+    {
+      "id": "terminateServer",
+      "type": "command",
+      "command": "workbench.action.tasks.terminate",
+      "args": "start server"
+    }
+  ]
+}

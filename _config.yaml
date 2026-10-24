@@ -1,0 +1,21 @@
+# Jekyll Configuration File
+
+source: site
+title: Dr. Luka Thornton
+# email: your-email@example.com
+description: >- # this means to ignore newlines until "baseurl:"
+  Dr. Luka Thornton
+baseurl: ""
+url: "https://thornton.phd"
+# twitter_username: jekyllrb
+# github_username:  jekyll
+
+theme: minima
+plugins:
+  - jekyll-feed
+
+# `jekyll serve` options for local development (see compose.yaml and
+# .vscode/tasks.json). ignored by `jekyll build`.
+host: 0.0.0.0
+port: 80
+livereload: true
